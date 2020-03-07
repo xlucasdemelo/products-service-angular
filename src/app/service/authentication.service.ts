@@ -19,12 +19,10 @@ export class AuthenticationService {
   ) { 
      }
 
-     authenticate(username, password) {
-      console.log(username, password)
-      // let url = "http://asellionproductsservice-env-1.eba-n74xmghk.us-east-2.elasticbeanstalk.com:8080/authenticate"
-      let url = "http://192.168.100.4/authenticate"
+     url = 'http://192.168.100.4:8080/authenticate'
 
-      return this.httpClient.post<any>(url,{username,password}).pipe(
+     authenticate(username, password) {
+      return this.httpClient.post<any>(this.url,{username,password}).pipe(
        map(
          userData => {
           sessionStorage.setItem('username',username);
