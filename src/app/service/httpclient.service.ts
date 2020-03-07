@@ -20,7 +20,8 @@ export class HttpClientService {
     private httpClient:HttpClient
   ) {}
     
-  url = "http://asellionproductsservice-env-1.eba-n74xmghk.us-east-2.elasticbeanstalk.com:8080/api"
+  // url = "http://asellionproductsservice-env-1.eba-n74xmghk.us-east-2.elasticbeanstalk.com:8080/api"
+  url = "http://192.168.100.4/api"
   
   KEY_TO_READ = environment.KEY_TO_READ;
 
