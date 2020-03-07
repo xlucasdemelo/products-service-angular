@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export class Product{
   constructor(
@@ -18,32 +19,27 @@ export class HttpClientService {
   constructor(
     private httpClient:HttpClient
   ) {}
-
-     
+    
+  url = "http://asellionproductsservice-env-1.eba-n74xmghk.us-east-2.elasticbeanstalk.com:8080/api"
+  
+  KEY_TO_READ = environment.KEY_TO_READ;
 
   getProducts()
   {
+    console.log(this.KEY_TO_READ)
     let token =sessionStorage.getItem('token')
     console.log(sessionStorage.getItem('token'))
-
-    const headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
-    
-       return this.httpClient.get<Product[]>('http://localhost:8080/api/products',{headers});
+       let headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
+       return this.httpClient.get<Product[]>(this.url + '/products',{headers});
   }
 
   public deleteProduct(product) {
-    let username='javainuse'
-    let password='password'
-  
-    const headers = new HttpHeaders({ Authorization: 'BEarer ' + btoa(username + ':' + password) });
-    return this.httpClient.delete<Product>("http://localhost:8080/api/products" + "/"+ product.empId,{headers});
+    let headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
+    return this.httpClient.delete<Product>(this.url + "/products" + "/"+ product.empId,{headers});
   }
 
   public createProduct(product) {
-    let username='javainuse'
-    let password='password'
-  
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.post<Product>("http://localhost:8080/api/products", product,{headers});
+    let headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
+    return this.httpClient.post<Product>(this.url + "/products", product,{headers});
   }
 }

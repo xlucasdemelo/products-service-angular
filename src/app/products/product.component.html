@@ -3,14 +3,18 @@
   <thead>
   <tr>
     <th>name</th>
-    <th>designation</th>
+    <td>description</td>
+    <td>currentPrice</td>
+    <td>lastUpdate</td>
     </tr>
   </thead>
   <tbody>
       <tr *ngFor="let product of products">
           <td>{{product.name}}</td>
-          <td>{{product.designation}}</td>
-          <td><button class="btn btn-danger" (click)="deleteProduct(product)"> Delete Product</button></td>
+          <td>{{product.description}}</td>
+          <td>{{product.currentPrice}}</td>
+          <td>{{product.lastUpdated}}</td>
+          <!-- <td><button class="btn btn-danger" (click)="deleteProduct(product)"> Delete Product</button></td> -->
           </tr>
   </tbody>
     </table>
