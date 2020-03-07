@@ -19,8 +19,10 @@ export class AuthenticationService {
   ) { 
      }
 
+     url = 'http://192.168.100.4:8080/authenticate'
+
      authenticate(username, password) {
-      return this.httpClient.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
+      return this.httpClient.post<any>(this.url,{username,password}).pipe(
        map(
          userData => {
           sessionStorage.setItem('username',username);
