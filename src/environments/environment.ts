@@ -5,7 +5,7 @@
 export const environment = {  
   production: false,
   envName: 'dev',
-  KEY_TO_READ: 'BACKEND_URL'
+  APIEndpoint: "http://192.168.100.4:8080"
 };
 /*
  * For easier debugging in development mode, you can import the following file

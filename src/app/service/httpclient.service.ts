@@ -11,6 +11,8 @@ export class Product{
   ) {}
 }
 
+const url = environment.APIEndpoint + "/api";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,21 +22,19 @@ export class HttpClientService {
     private httpClient:HttpClient
   ) {}
 
-  url = 'http://192.168.100.4:8080/api'     
-
   getProducts()
   {
       const headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
-      return this.httpClient.get<Product[]>(this.url + '/products',{headers});
+      return this.httpClient.get<Product[]>(url + '/products',{headers});
   }
 
   public deleteProduct(product) {
     const headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
-    return this.httpClient.delete<Product>(this.url + "/products" + "/"+ product.empId,{headers});
+    return this.httpClient.delete<Product>(url + "/products" + "/"+ product.empId,{headers});
   }
 
   public createProduct(product) {
     const headers = new HttpHeaders({ Authorization: sessionStorage.getItem('token') });
-    return this.httpClient.post<Product>(this.url + "/products", product,{headers});
+    return this.httpClient.post<Product>(url + "/products", product,{headers});
   }
 }
