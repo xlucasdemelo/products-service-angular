@@ -15,7 +15,7 @@ This application uses npm for dependency management, it is mandatory to install 
 npm: https://nodejs.org/en/
 ```
 
-### Running with maven
+### Running with npm
 
 [NOTE] The backend must be running in order to use the application, run it following the steps at https://github.com/xlucasdemelo/products-service
 
